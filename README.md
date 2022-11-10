@@ -8,10 +8,8 @@ This is a back end challenge utilizing MySql's CRUD routes. This createse differ
   # Installation
   The following necessary dependencies must be installed to run the application:
 
-  npm install
-
-    to download all dependencies within the package.json
-
+    npm install 
+    
   # Usage
   In order to use this app, you will need Visual Studio Code, Node.js, MySql, dotenv, mysql2, sequelize, and express.js. 
   You will need to run the 'npm run schema' to run the database and run 'npm run seed' to seed the database. Don't forget to create a .env file and include your username and password. 
