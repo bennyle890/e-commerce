@@ -111,10 +111,14 @@ router.put('/:id', (req, res) => {
   })
     .then((product) => {
       // find all associated tags from ProductTag
+      if (req.body.tagIds !== undefined) {
       return ProductTag.findAll({ where: { product_id: req.params.id } });
+      }
+      res.json(product);
     })
     .then((productTags) => {
       // get list of current tag_ids
+      if (productTags !== undefined) {
       const productTagIds = productTags.map(({ tag_id }) => tag_id);
       // create filtered list of new tag_ids
       const newProductTags = req.body.tagIds
@@ -135,8 +139,12 @@ router.put('/:id', (req, res) => {
         ProductTag.destroy({ where: { id: productTagsToRemove } }),
         ProductTag.bulkCreate(newProductTags),
       ]);
+     }
     })
-    .then((updatedProductTags) => res.json(updatedProductTags))
+    .then((updatedProductTags) => {
+      if (updatedProductTags !== undefined) {
+      res.json(updatedProductTags)} 
+})
     .catch((err) => {
       // console.log(err);
       res.status(400).json(err);
