@@ -66,7 +66,7 @@ router.put('/:id', (req, res) => {
   Category.update(
     {
       where: {
-        id: res.params.id
+        id: req.params.id
       }
     }
   )
