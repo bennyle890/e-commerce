@@ -27,6 +27,9 @@ router.get('/:id', (req, res) => {
       'id',
       'tag_name'
     ],
+    where: {
+      id: req.params.id
+    },
       // be sure to include its associated Product data
     include: {
       model: Product,
